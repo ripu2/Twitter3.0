@@ -10,7 +10,7 @@ twitter3.0/node_modules
 /coverage
 
 # next.js
-/.next/
+client/.next/
 /out/
 
 # production
