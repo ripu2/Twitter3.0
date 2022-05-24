@@ -37,7 +37,7 @@ function CreateTweetBox() {
 
   return (
     <ProfileContainer>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', flexGrow: 1 }}>
         <ProfilePicture src="https://www.looper.com/img/gallery/25-most-powerful-naruto-characters-ranked-worst-to-best/l-intro-1651164487.jpg" />
         <div style={{flex: 1}}>
           <TweeetField>

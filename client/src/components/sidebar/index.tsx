@@ -26,8 +26,7 @@ import {
 } from 'react-icons/bs'
 
 function Sidebar() {
-  const [selected, setSelected] = useState('')
-  console.log('sel', selected)
+  const [selected, setSelectedd] = useState('')
 
   return (
     <ParentCotainer>
@@ -40,7 +39,7 @@ function Sidebar() {
           text="Home"
           isActive={Boolean(selected === 'Home')}
           setSelected={() => {
-            setSelected('Home')
+            setSelectedd('Home')
           }}
           redirect={'/'}
         />
@@ -49,52 +48,52 @@ function Sidebar() {
           text="Explore"
           isActive={Boolean(selected === 'Explore')}
           setSelected={() => {
-            setSelected('Explore')
+            setSelectedd('Explore')
           }}
-          redirect={'/Explore'}
+          redirect={'/explore'}
         />
         <SideBarCell
           icon={selected === 'Notifications' ? FaBell : FiBell}
           text="Notifications"
           isActive={Boolean(selected === 'Notifications')}
           setSelected={() => {
-            setSelected('Notifications')
+            setSelectedd('Notifications')
           }}
-          redirect={'/Notifications'}
+          redirect={'/notifications'}
         />
         <SideBarCell
           icon={selected === 'Messages' ? HiMail : HiOutlineMail}
           text="Messages"
           isActive={Boolean(selected === 'Messages')}
           setSelected={() => {
-            setSelected('Messages')
+            setSelectedd('Messages')
           }}
-          redirect={'/Messages'}
+          redirect={'/messages'}
         />
         <SideBarCell
           icon={selected === 'Bookmarks' ? BsBookmarkFill : BsBookmark}
           text="Bookmarks"
           isActive={Boolean(selected === 'Bookmarks')}
           setSelected={() => {
-            setSelected('Bookmarks')
+            setSelectedd('Bookmarks')
           }}
-          redirect={'/Bookmarks'}
+          redirect={'/bookmarks'}
         />
         <SideBarCell
           icon={selected === 'Lists' ? RiFileList2Fill : FaRegListAlt}
           text="Lists"
           isActive={Boolean(selected === 'Lists')}
           setSelected={() => {
-            setSelected('Lists')
+            setSelectedd('Lists')
           }}
-          redirect={'/Lists'}
+          redirect={'/lists'}
         />
         <SideBarCell
           icon={selected === 'Profile' ? BsPersonFill : BsPerson}
           text="Profile"
           isActive={Boolean(selected === 'Profile')}
           setSelected={() => {
-            setSelected('Profile')
+            setSelectedd('Profile')
           }}
           redirect={'/profile'}
         />

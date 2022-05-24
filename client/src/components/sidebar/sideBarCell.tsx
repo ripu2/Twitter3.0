@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React, { MouseEventHandler } from 'react'
 import { IconContainer, SideBarCells } from './styles'
 
@@ -10,8 +11,13 @@ interface SiceBarCellProps{
 }
 
 function SideBarCell(props: SiceBarCellProps) {
+  const router = useRouter()
+  
   return (
-    <SideBarCells onClick={() => props.setSelected()}>
+    <SideBarCells onClick={(e: any) =>{
+      props.setSelected(e)
+      router.push(props.redirect as string)
+    }}>
         <IconContainer>
             <props.icon />
         </IconContainer>

@@ -34,9 +34,9 @@ function Tweets() {
   return (
     <div>
         {
-            tweet.map((el: TweetInterface) => {
+            tweet.map((el: TweetInterface, index: number) => {
                 return(
-                    <Posts {...el} />
+                    <Posts {...el} key={index} />
                 )
             })
         }
