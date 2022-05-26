@@ -1,30 +1,36 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
-import { ethers } from "hardhat";
+const HDWalletProvider = require('@truffle/hdwallet-provider')
+const Web3 = require('web3')
 
-async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+const Twitter = require('./build/Twitter.json')
 
-  // We get the contract to deploy
-  const Greeter = await ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+const provider = new HDWalletProvider(
+    'zero idle knock obtain science cotton equal soon maid shy couple ability',
+    'https://rinkeby.infura.io/v3/16d5d06c796f4d94aaa9bb8e5a93fa74'
+)
 
-  await greeter.deployed();
+const web3 = new Web3(provider)
 
-  console.log("Greeter deployed to:", greeter.address);
+const deploy = async () => {
+    const accounts = await web3.eth.getAccounts();
+    console.log('accounts', accounts)
+    if (accounts) {
+        console.log('Attempting to deploy form =====>', accounts[0], '🚀')
+
+        try {
+            const res = await new web3.eth.Contract(JSON.parse(Twitter.interface))
+            .deploy({ data: Twitter.bytecode })
+            .send({ gas: '10000000', from: accounts[0] })
+
+        if (res) {
+            console.log('interface ====>', Twitter.interface)
+            console.log('Contract deployed at ===>', res.options.address, '🔥');
+            provider.engine.stop()
+        }
+        } catch (error) {
+            console.log('errr =====>', error)
+        }
+    } else {
+        console.log('failed to deploy contract ☹️')
+    }
 }
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+deploy()

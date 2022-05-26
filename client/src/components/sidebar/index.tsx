@@ -24,13 +24,17 @@ import {
   BsPerson,
   BsPersonFill,
 } from 'react-icons/bs'
+import { MoralisContext, useMoralis } from 'react-moralis'
+import DialogBox from '../dialogue'
 
 function Sidebar() {
   const [selected, setSelectedd] = useState('')
+  const [open, setOpen] = useState(false)
 
   return (
     <ParentCotainer>
       <div>
+      <DialogBox open={open} onClose={() => setOpen(false)} />
         <IconContainerBird>
           <VscTwitter size={30} />
         </IconContainerBird>
@@ -106,6 +110,7 @@ function Sidebar() {
           @dwdx...4
           <FiMoreHorizontal />
         </LowerChildProfile>
+        <MintButton style={{ backgroundColor: '#1d9bf0' }} onClick={() => setOpen(true)}>Logout</MintButton>
       </LowerChild>
     </ParentCotainer>
   )
